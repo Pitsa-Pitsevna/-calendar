@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Пример 18 - Календарь</title>
+</head>
+
+<body>
+  <div class="container"></div>
+
+  <script>
+    function createCalendar(elem, year, month) {
+      elem = document.querySelector(elem)
+
+      let mon = month - 1;
+      let d = new Date(year, mon)
+
+      let table = `
+      <caption>${month}.${year}</caption>
+      <table>
+        <tr>
+          <th>пн</th>
+          <th>вт</th>
+          <th>ср</th>
+          <th>чт</th>
+          <th>пт</th>
+          <th>сб</th>
+          <th>вс</th>
+        </tr>
+      <tr>
+      `;
+// часть 4: создаем ячейки между началом и завершнением таблицы
+     for(let i = 0; i < getDay(d); i++) {
+      table += '<td></td>'
+     }
+// часть 5
+     while(d.getMonth() == mon) {
+     table += '<td>' + d.getDate() + '</td>'
+    if(getDay(d) % 7 ==6) {
+      table += '</tr><tr>'
+    }
+    d.setDate(d.getDate() + 1)
+     }
+
+     if(getDay(d) !=0) {
+      for(let i = getDay(d); i < 7; i++) {
+        table += '<td></td>'
+      }
+     }
+      table += '</tr></table>';
+      elem.innerHTML = table
+    
+    }
+    function getDay(date) {
+      let day = date.getDay();
+      if(day == 0) day = 7;
+      return day - 1;
+    }
+
+    createCalendar('body', 2021, 4)
+  </script>
+</body>
+
+</html>

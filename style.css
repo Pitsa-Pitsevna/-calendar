@@ -1,0 +1,22 @@
+table {
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+  caption {
+    padding: 10px 0;
+    background-color: #fff6ce;
+    border: 1px solid black;
+    border-bottom: none;
+  }
+  td,
+  th {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+    font-size: 18px;
+  }
+  th {
+    font-weight: bold;
+    background-color: #fff6ce;
+  }
